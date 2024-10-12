@@ -1,9 +1,9 @@
 public struct Token {
     public let type: TokenType
-    public let literal: String
+    public var literal: String
 }
 
-public enum TokenType: String {
+public enum TokenType: String, Sendable {
     case ILLEGAL = "ILLEGAL"
     case EOF = "EOF"
 
@@ -26,4 +26,16 @@ public enum TokenType: String {
     // Keywords
     case FUNCTION = "FUNCTION"
     case LET = "LET"
+}
+
+let keywords: [String: TokenType] = [
+    "fn": .FUNCTION,
+    "let": .LET
+]
+
+public func lookupIdent(_ ident: String) -> TokenType {
+    if let tokenType = keywords[ident] {
+        return tokenType
+    }
+    return .IDENT
 }
