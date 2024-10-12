@@ -1,0 +1,4 @@
+books/
+.build/
+
+.DS_Store
