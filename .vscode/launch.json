@@ -1,0 +1,58 @@
+{
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Debug LenguaSwiftExecutable",
+      "program": "${workspaceFolder:lengua-swift}/.build/debug/LenguaSwiftExecutable",
+      "preLaunchTask": "swift: Build Debug LenguaSwiftExecutable"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Release LenguaSwiftExecutable",
+      "program": "${workspaceFolder:lengua-swift}/.build/release/LenguaSwiftExecutable",
+      "preLaunchTask": "swift: Build Release LenguaSwiftExecutable"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Debug Lengua Compiler",
+      "program": "${workspaceFolder:lengua-swift}/.build/debug/Lengua Compiler",
+      "preLaunchTask": "swift: Build Debug Lengua Compiler"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Release Lengua Compiler",
+      "program": "${workspaceFolder:lengua-swift}/.build/release/Lengua Compiler",
+      "preLaunchTask": "swift: Build Release Lengua Compiler"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Debug LenguaCompiler",
+      "program": "${workspaceFolder:lengua-swift}/.build/debug/LenguaCompiler",
+      "preLaunchTask": "swift: Build Debug LenguaCompiler"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:lengua-swift}",
+      "name": "Release LenguaCompiler",
+      "program": "${workspaceFolder:lengua-swift}/.build/release/LenguaCompiler",
+      "preLaunchTask": "swift: Build Release LenguaCompiler"
+    }
+  ]
+}

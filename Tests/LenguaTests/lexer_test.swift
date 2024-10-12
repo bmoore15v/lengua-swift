@@ -1,5 +1,5 @@
 import XCTest
-import LenguaSwift
+import LenguaInterpreter
 
 public class LexerTests: XCTestCase {
     func testNextToken() {
@@ -12,19 +12,36 @@ public class LexerTests: XCTestCase {
         };
 
         let result = add(five, ten);
+
+        !-/*5;
+        5 < 10 > 5;
+
+        if (5 < 10) {
+            return true;
+        } else {
+            return false;
+        }
+
+        10 == 10;
+        10 != 9;
         """
 
-        let tests: [(expectedType: LenguaSwift.TokenType, expectedLiteral: String)] = [
+        let tests: [(expectedType: LenguaInterpreter.TokenType, expectedLiteral: String)] = [
+            // First expression
             (.LET, "let"),
             (.IDENT, "five"),
             (.ASSIGN, "="),
             (.INT, "5"),
             (.SEMICOLON, ";"),
+
+            // Second expression
             (.LET, "let"),
             (.IDENT, "ten"),
             (.ASSIGN, "="),
             (.INT, "10"),
             (.SEMICOLON, ";"),
+
+            // Third expression
             (.LET, "let"),
             (.IDENT, "add"),
             (.ASSIGN, "="),
@@ -40,6 +57,8 @@ public class LexerTests: XCTestCase {
             (.IDENT, "y"),
             (.RBRACE, "}"),
             (.SEMICOLON, ";"),
+
+            // Fourth expression
             (.LET, "let"),
             (.IDENT, "result"),
             (.ASSIGN, "="),
@@ -50,38 +69,57 @@ public class LexerTests: XCTestCase {
             (.IDENT, "ten"),
             (.RPAREN, ")"),
             (.SEMICOLON, ";"),
+
+            // Fifth expression
+            (.BANG, "!"),
+            (.MINUS, "-"),
+            (.SLASH, "/"),
+            (.ASTERISK, "*"),
+            (.INT, "5"),
+            (.SEMICOLON, ";"),
+
+            // Sixth expression
+            (.INT, "5"),
+            (.LT, "<"),
+            (.INT, "10"),
+            (.GT, ">"),
+            (.INT, "5"),
+            (.SEMICOLON, ";"),
+
+            // Seventh expression
+            (.IF, "if"),
+            (.LPAREN, "("),
+            (.INT, "5"),
+            (.LT, "<"),
+            (.INT, "10"),
+            (.RPAREN, ")"),
+            (.LBRACE, "{"),
+            (.RETURN, "return"),
+            (.TRUE, "true"),
+            (.SEMICOLON, ";"),
+            (.RBRACE, "}"),
+            (.ELSE, "else"),
+            (.LBRACE, "{"),
+            (.RETURN, "return"),
+            (.FALSE, "false"),
+            (.SEMICOLON, ";"),
+            (.RBRACE, "}"),
+
+            // Eighth expression
+            (.INT, "10"),
+            (.EQ, "=="),
+            (.INT, "10"),
+            (.SEMICOLON, ";"),
+
+            // Ninth expression
+            (.INT, "10"),
+            (.NOT_EQ, "!="),
+            (.INT, "9"),
+            (.SEMICOLON, ";"),
             (.EOF, "")
         ]
-
-        // let input = """
-        // let five = 5;
-        // """
         
-        // let tests: [(expectedType: LenguaSwift.TokenType, expectedLiteral: String)] = [
-        //     (.LET, "let"),
-        //     (.IDENT, "five"),
-        //     (.ASSIGN, "="),
-        //     (.INT, "5"),
-        //     (.SEMICOLON, ";"),
-        //     (.EOF, ""),
-        // ]
-
-        // let input = "=+(){},;"
-        // let tests: [(expectedType: LenguaSwift.TokenType, expectedLiteral: String)] = [
-        //     (.ASSIGN, "="),
-        //     (.PLUS, "+"),
-        //     (.LPAREN, "("),
-        //     (.RPAREN, ")"),
-        //     (.LBRACE, "{"),
-        //     (.RBRACE, "}"),
-        //     (.COMMA, ","),
-        //     (.SEMICOLON, ";"),
-        //     (.EOF, ""),
-        // ]
-
-
-        
-        let lexer = LenguaSwift.Lexer(input: input)
+        let lexer = LenguaInterpreter.Lexer(input: input)
         
         for (i, tt) in tests.enumerated() {
             let token = lexer.nextToken()

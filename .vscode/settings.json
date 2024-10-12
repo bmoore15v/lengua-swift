@@ -1,5 +1,13 @@
 {
   "lldb.library": "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
   "lldb.launch.expressions": "native",
-  "cSpell.words": ["Lengua", "LPAREN", "RPAREN"]
+  "cSpell.words": ["Lengua", "LPAREN", "RPAREN"],
+  "swiftformat.enable": true,
+  "editor.defaultFormatter": "vknabel.vscode-swiftformat",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "[swift]": {
+    "editor.defaultFormatter": "vknabel.vscode-swiftformat"
+  },
 }

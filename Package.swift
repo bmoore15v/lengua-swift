@@ -2,18 +2,37 @@
 import PackageDescription
 
 let package = Package(
-    name: "LenguaSwift",
+    name: "LenguaCompiler",
     products: [
+        // The library that others can import, containing the lexer, token, etc.
         .library(
-            name: "LenguaSwift",
-            targets: ["LenguaSwift"]),
+            name: "LenguaInterpreter",
+            targets: ["LenguaInterpreter"]
+        ),
+        // The executable that contains the REPL logic
+        .executable(
+            name: "LenguaCompiler",
+            targets: ["LenguaCompiler"]
+        )
+    ],
+    dependencies: [
+        .package(url: "https://github.com/nicklockwood/SwiftFormat.git", from: "0.35.8"),
     ],
     targets: [
+        // The library target for core logic
         .target(
-            name: "LenguaSwift",
-            dependencies: []),
+            name: "LenguaInterpreter",
+            dependencies: []
+        ),
+        // The executable target for the REPL
+        .executableTarget(
+            name: "LenguaCompiler",
+            dependencies: ["LenguaInterpreter"]
+        ),
+        // Test target
         .testTarget(
             name: "LenguaTests",
-            dependencies: ["LenguaSwift"]),
+            dependencies: ["LenguaInterpreter"]
+        )
     ]
 )

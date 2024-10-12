@@ -2,3 +2,4 @@ books/
 .build/
 
 .DS_Store
+Package.resolved
